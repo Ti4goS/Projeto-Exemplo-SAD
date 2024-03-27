@@ -5,15 +5,25 @@ begin
     WHERE @data_carga = DATA_CARGA;
 
     INSERT INTO TB_AUX_VENDA 
-    SELECT @data_carga, DATA_VENDA, COD_LOJA, COD_PRODUTO, COD_TIPO_PAGAMENTO, COD_VENDA, VOLUME, VALOR
-    FROM TB_VENDA
-    WHERE DATA_VENDA BETWEEN @data_inicial AND @data_final;
+    SELECT 
+        @data_carga, 
+        DATA_VENDA, 
+        COD_LOJA, 
+        COD_PRODUTO, 
+        COD_TIPO_PAGAMENTO, 
+        COD_VENDA, 
+        VOLUME, 
+        VALOR
+    FROM 
+        TB_VENDA
+    WHERE 
+        DATA_VENDA BETWEEN @data_inicial AND @data_final;
 end
 
 
 
 -- Teste
 
-exec sp_oltp_venda '20230321', '20230101', '20230701'
+exec sp_oltp_venda '20240324', '20230101', '20230701'
 
 select * from tb_aux_venda

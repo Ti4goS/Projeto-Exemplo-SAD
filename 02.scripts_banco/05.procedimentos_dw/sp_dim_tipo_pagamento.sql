@@ -30,6 +30,6 @@ end
 
 -- Teste
 
-exec sp_dim_tipo_pagamento '20230321'
+exec sp_dim_tipo_pagamento '20240324'
 
 select * from dim_tipo_pagamento

@@ -31,7 +31,7 @@ end
 
 -- Teste
 
-exec sp_dim_loja '20230321'
+exec sp_dim_loja '20240324'
 
 select * from dim_loja
 

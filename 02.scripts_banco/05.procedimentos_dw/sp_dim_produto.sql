@@ -31,6 +31,6 @@ end
 
 -- Teste
 
-exec sp_dim_produto '20230321'
+exec sp_dim_produto '20240324'
 
 select * from dim_produto
