@@ -24,6 +24,6 @@ end
 
 -- Teste
 
-exec sp_oltp_venda '20240324', '20230101', '20230701'
+exec sp_oltp_venda '20230321', '20240101', '20240327'
 
 select * from tb_aux_venda

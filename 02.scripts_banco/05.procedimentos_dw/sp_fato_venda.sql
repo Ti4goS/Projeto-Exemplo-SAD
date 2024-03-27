@@ -30,7 +30,7 @@ begin
         SET @ID_LOJA = NULL
         SET @ID_PRODUTO = NULL
         SET @ID_TIPO_PAGAMENTO = NULL
-
+        SET @ID_VIO_VENDA = NULL
 
         SELECT @ID_TEMPO = ID_TEMPO 
 		FROM DIM_TEMPO 
@@ -58,9 +58,12 @@ begin
                 WHERE 
                     COD_VENDA = @COD_VENDA
 
-                UPDATE TB_VIO_VENDA
+                UPDATE
+                    TB_VIO_VENDA
                 SET 
                     VIOLACAO = VIOLACAO + ', LOJA INVÁLIDA'
+                WHERE
+                    ID_VIOLACAO = @ID_VIO_VENDA
             END
             ELSE
             BEGIN
@@ -85,9 +88,12 @@ begin
                 WHERE 
                     COD_VENDA = @COD_VENDA
 
-                UPDATE TB_VIO_VENDA
+                UPDATE 
+                    TB_VIO_VENDA
                 SET 
                     VIOLACAO = VIOLACAO + ', PRODUTO INVÁLIDO'
+                WHERE
+                    ID_VIOLACAO = @ID_VIO_VENDA
             END
             ELSE
             BEGIN
@@ -112,9 +118,12 @@ begin
                 WHERE 
                     COD_VENDA = @COD_VENDA
 
-                UPDATE TB_VIO_VENDA
+                UPDATE
+                    TB_VIO_VENDA
                 SET 
                     VIOLACAO = VIOLACAO + ', TIPO DE PAGAMENTO INVÁLIDO'
+                WHERE
+                    ID_VIOLACAO = @ID_VIO_VENDA
             END
             ELSE
             BEGIN
@@ -152,8 +161,10 @@ begin
     
 end
 
-exec sp_fato_venda '20240324'
+exec sp_fato_venda '20240321'
 
 select * from FATO_VENDA
 
 select * from TB_VIO_VENDA
+
+--DELETE FROM TB_VIO_VENDA
